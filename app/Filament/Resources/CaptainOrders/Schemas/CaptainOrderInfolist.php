@@ -2,7 +2,10 @@
 
 namespace App\Filament\Resources\CaptainOrders\Schemas;
 
+use Filament\Infolists\Components\TextEntry;
+use Filament\Schemas\Components\Section;
 use Filament\Schemas\Schema;
+use Filament\Support\Enums\FontWeight;
 
 class CaptainOrderInfolist
 {
@@ -10,7 +13,29 @@ class CaptainOrderInfolist
     {
         return $schema
             ->components([
-                //
+                Section::make()
+                    ->columnSpanFull()
+                    ->columns(4)
+                    ->schema([
+                        TextEntry::make('table.table_number')
+                            ->label(__('orders.table'))
+                            ->weight(FontWeight::Bold)
+                            ->getStateUsing(fn($record) => "( #{$record->table?->table_number} ) {$record->table?->place?->name}"),
+                        TextEntry::make('customer')
+                            ->label(__('orders.customer'))
+                            ->weight(FontWeight::Bold)
+                            ->getStateUsing(fn($record) => $record->customer ? "( #{$record->customer?->phone_number} ) {$record->customer?->display_name}" : "---"),
+                        TextEntry::make('items_count')
+                            ->label(__('orders.items'))
+                            ->numeric()
+                            ->default(0)
+                            ->weight(FontWeight::Bold),
+                        TextEntry::make('items_final_price_sum')
+                            ->label(__('orders.price'))
+                            ->numeric()
+                            ->default(0)
+                            ->weight(FontWeight::Bold),
+                    ])
             ]);
     }
 }

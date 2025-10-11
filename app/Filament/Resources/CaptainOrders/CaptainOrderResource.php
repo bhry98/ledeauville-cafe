@@ -7,6 +7,7 @@ use App\Filament\Resources\CaptainOrders\Pages\CreateCaptainOrder;
 use App\Filament\Resources\CaptainOrders\Pages\EditCaptainOrder;
 use App\Filament\Resources\CaptainOrders\Pages\ListCaptainOrders;
 use App\Filament\Resources\CaptainOrders\Pages\ViewCaptainOrder;
+use App\Filament\Resources\CaptainOrders\RelationManagers\ItemsRelationManager;
 use App\Filament\Resources\CaptainOrders\Schemas\CaptainOrderForm;
 use App\Filament\Resources\CaptainOrders\Schemas\CaptainOrderInfolist;
 use App\Filament\Resources\CaptainOrders\Tables\CaptainOrdersTable;
@@ -48,12 +49,14 @@ class CaptainOrderResource extends Resource
             ->where([
                 "status" => OrdersStatusEnum::Open,
             ])
-//            ->withCount([
-//                'items'
-//            ])
+            ->withCount([
+                'items'
+            ])
+            ->withSum('items', 'final_price')
             ->with([
                 'table',
                 'customer',
+                'cacher',
             ])
             ->latest();
     }
@@ -76,7 +79,7 @@ class CaptainOrderResource extends Resource
     public static function getRelations(): array
     {
         return [
-            //
+            'items' => ItemsRelationManager::class,
         ];
     }
 
@@ -84,7 +87,7 @@ class CaptainOrderResource extends Resource
     {
         return [
             'index' => ListCaptainOrders::route('/'),
-            'create' => CreateCaptainOrder::route('/c'),
+//            'create' => CreateCaptainOrder::route('/c'),
             'view' => ViewCaptainOrder::route('/{record}'),
         ];
     }

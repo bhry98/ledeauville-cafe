@@ -26,10 +26,9 @@ return new class extends Migration {
             $table->foreignId('cacher_id')->nullable()->references('id')->on((new UserModel)->getTable())->cascadeOnUpdate()->nullOnDelete();
             $table->foreignId('customer_id')->nullable()->references('id')->on((new CustomerModel)->getTable())->cascadeOnUpdate()->nullOnDelete();
             $table->string('status')->default(OrdersStatusEnum::Open->name);
-            $table->string('payment_type');
-            $table->decimal('price', 10, 2);
-            $table->decimal('discount', 10, 2);
-            $table->decimal('total_price', 10, 2);
+            $table->string('payment_type')->nullable();
+            $table->decimal('discount', 10, 2)->default(0);
+            $table->decimal('final_price', 10, 2)->default(0);
             $table->timestamps();
         });
     }

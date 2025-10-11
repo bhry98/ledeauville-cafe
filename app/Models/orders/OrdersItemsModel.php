@@ -18,6 +18,7 @@ class OrdersItemsModel extends Model
         'amount',
         'price',
         'discount',
+        'final_price',
     ];
 
     protected function casts(): array
@@ -26,6 +27,7 @@ class OrdersItemsModel extends Model
             'amount' => 'integer',
             'price' => 'integer',
             'discount' => 'integer',
+            'final_price' => 'integer',
             'status' => OrdersItemsStatusEnum::class,
         ];
     }
@@ -39,4 +41,5 @@ class OrdersItemsModel extends Model
     {
         return $this->hasOne(OrdersModel::class, 'id', 'order_id');
     }
+
 }

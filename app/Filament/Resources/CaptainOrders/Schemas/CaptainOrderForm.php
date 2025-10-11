@@ -13,7 +13,8 @@ class CaptainOrderForm
             ->components([
                 Select::make('table')
                     ->label(__("orders.table"))
-                    ->relationship('table', 'table_number')
+                    ->relationship('table', 'table_number', fn($query) => $query->whereDoesntHave('openOrder'))
+                    ->getOptionLabelFromRecordUsing(fn($record) => "( #$record->table_number ) {$record->place?->name}")
                     ->required()
                     ->searchable()
                     ->preload(),

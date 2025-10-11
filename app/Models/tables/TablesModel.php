@@ -2,6 +2,7 @@
 
 namespace App\Models\tables;
 
+use App\Enums\orders\OrdersStatusEnum;
 use App\Models\orders\OrdersModel;
 use App\Traits\HasCode;
 use Illuminate\Database\Eloquent\Model;
@@ -39,5 +40,10 @@ class TablesModel extends Model
     public function lastOrder(): HasOne
     {
         return $this->hasOne(OrdersModel::class, 'table_id', 'id')->latest();
+    }
+
+    public function openOrder(): HasOne
+    {
+        return $this->hasOne(OrdersModel::class, 'table_id', 'id')->where('status', OrdersStatusEnum::Open);
     }
 }

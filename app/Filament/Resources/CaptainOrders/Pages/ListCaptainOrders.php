@@ -13,7 +13,10 @@ class ListCaptainOrders extends ListRecords
     protected function getHeaderActions(): array
     {
         return [
-            CreateAction::make(),
+            CreateAction::make()
+                ->label(__("orders.open-new-table"))
+                ->modalHeading(__("orders.open-new-table"))
+                ->closeModalByClickingAway(false)
         ];
     }
 }

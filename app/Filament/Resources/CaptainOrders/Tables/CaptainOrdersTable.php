@@ -17,7 +17,11 @@ class CaptainOrdersTable
             ->columns([
                 TextColumn::make('code')
                     ->label(__("orders.code"))
-                    ->searchable(),
+                    ->searchable()
+                    ->toggleable()
+                    ->toggledHiddenByDefault(),
+                TextColumn::make('table.place.name')
+                    ->label(__("orders.table-place")),
                 TextColumn::make('table.table_number')
                     ->label(__("orders.table-number"))
                     ->numeric(),
@@ -26,18 +30,25 @@ class CaptainOrdersTable
                     ->default("---"),
                 TextColumn::make('status')
                     ->label(__("orders.status"))
-                    ->badge(),
+                    ->badge()
+                    ->toggleable()
+                    ->toggledHiddenByDefault(),
                 TextColumn::make('items_count')
                     ->label(__("orders.items"))
                     ->numeric(),
-                TextColumn::make('total_price')
-                    ->label(__("orders.total-price"))
-                    ->numeric(),
+                TextColumn::make('items_final_price_sum')
+                    ->label(__("orders.price"))
+                    ->numeric()
+                    ->default(0),
                 TextColumn::make('cacher.name')
-                    ->label(__("orders.cacher")),
+                    ->label(__("orders.cacher"))
+                    ->toggleable()
+                    ->toggledHiddenByDefault(),
                 TextColumn::make('created_at')
                     ->label(__("global.created-at"))
-                    ->dateTime(),
+                    ->dateTime()
+                    ->toggleable()
+                    ->toggledHiddenByDefault(),
                 TextColumn::make('updated_at')
                     ->label(__("global.updated-at"))
                     ->dateTime(),
@@ -46,7 +57,7 @@ class CaptainOrdersTable
                 //
             ])
             ->recordActions([
-                ViewAction::make(),
+//                ViewAction::make(),
                 EditAction::make(),
             ]);
     }
