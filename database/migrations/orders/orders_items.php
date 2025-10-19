@@ -29,6 +29,7 @@ return new class extends Migration {
             $table->decimal('price', 10, 2);
             $table->decimal('discount', 10, 2);
             $table->decimal('final_price', 10, 2);
+            $table->string('note')->nullable();
             $table->timestamps();
         });
     }

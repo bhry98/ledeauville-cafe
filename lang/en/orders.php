@@ -16,4 +16,14 @@ return [
     "code" => "Code",
     "open-new-table" => "Open new table",
     "status" => "Status",
+    "item" => "Item",
+    "final-price" => "Final price",
+    "amount" => "Amount",
+    "discount" => "Discount",
+    "note" => "Note",
+    "status-label" => [
+        "preparing" => "Preparing",
+        "delivered" => "Delivered",
+        "cancelled" => "Cancelled",
+    ],
 ];

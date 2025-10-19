@@ -2,12 +2,15 @@
 
 namespace App\Filament\Resources\CaptainOrders\Tables;
 
+use App\Filament\Resources\CaptainOrders\RelationManagers\ItemsRelationManager;
 use Filament\Actions\BulkActionGroup;
 use Filament\Actions\DeleteBulkAction;
 use Filament\Actions\EditAction;
 use Filament\Actions\ViewAction;
+use Filament\Support\Icons\Heroicon;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
+use Guava\FilamentModalRelationManagers\Actions\RelationManagerAction;
 
 class CaptainOrdersTable
 {
@@ -36,7 +39,7 @@ class CaptainOrdersTable
                 TextColumn::make('items_count')
                     ->label(__("orders.items"))
                     ->numeric(),
-                TextColumn::make('items_final_price_sum')
+                TextColumn::make('items_sum_final_price')
                     ->label(__("orders.price"))
                     ->numeric()
                     ->default(0),
@@ -57,8 +60,16 @@ class CaptainOrdersTable
                 //
             ])
             ->recordActions([
+                RelationManagerAction::make('lesson-relation-manager')
+                    ->label(__('orders.items'))
+                    ->modalHeading(__('orders.items'))
+                    ->icon(Heroicon::ShoppingBag)
+                    ->slideOver()
+                    ->modalWidth("full")
+                    ->closeModalByClickingAway(false)
+                    ->relationManager(ItemsRelationManager::make()),
 //                ViewAction::make(),
-                EditAction::make(),
+//                EditAction::make(),
             ]);
     }
 }

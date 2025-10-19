@@ -49,7 +49,7 @@ class OrdersModel extends Model
 
     public function items(): HasMany
     {
-        return $this->hasMany(OrdersItemsModel::class, 'order_id', 'id');
+        return $this->hasMany(OrdersItemsModel::class, 'order_id', 'id')->latest();
     }
 
     public function cacher(): HasOne

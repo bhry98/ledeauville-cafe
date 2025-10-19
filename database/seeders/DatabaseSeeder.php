@@ -21,16 +21,16 @@ class DatabaseSeeder extends Seeder
     {
         // User::factory(10)->create();
 
-//        UserModel::query()->updateOrCreate(
-//            [
-//
-//                'email' => 'admin@cafe.com',
-//            ],
-//            [
-//                'name' => 'Super Admin',
-//                'email' => 'admin@cafe.com',
-//                "password" => Hash::make("123"),
-//            ]);
+        UserModel::query()->updateOrCreate(
+            [
+
+                'email' => 'admin@cafe.com',
+            ],
+            [
+                'name' => 'Super Admin',
+                'email' => 'admin@cafe.com',
+                "password" => Hash::make("123"),
+            ]);
         $this->seedTables();
         $this->seedItems();
     }

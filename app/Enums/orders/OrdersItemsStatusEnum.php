@@ -22,9 +22,9 @@ enum OrdersItemsStatusEnum implements HasIcon, HasColor, HasLabel, HasDescriptio
     public function getLabel(): string|Htmlable|null
     {
         return match ($this) {
-            self::Preparing => __("orders.status.preparing.label"),
-            self::Delivered => __("orders.status.delivered.label"),
-            self::Cancelled => __("orders.status.cancelled.label"),
+            self::Preparing => __("orders.status-label.preparing"),
+            self::Delivered => __("orders.status-label.delivered"),
+            self::Cancelled => __("orders.status-label.cancelled"),
 
         };
     }

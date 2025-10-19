@@ -18,6 +18,7 @@ use Illuminate\Foundation\Http\Middleware\VerifyCsrfToken;
 use Illuminate\Routing\Middleware\SubstituteBindings;
 use Illuminate\Session\Middleware\StartSession;
 use Illuminate\View\Middleware\ShareErrorsFromSession;
+use lockscreen\FilamentLockscreen\Lockscreen;
 use Swis\Filament\Backgrounds\FilamentBackgroundsPlugin;
 use Swis\Filament\Backgrounds\ImageProviders\MyImages;
 
@@ -52,7 +53,16 @@ class PanelPanelProvider extends PanelProvider
                 ->imageProvider(
                     MyImages::make()
                     ->directory("app/backgrounds")
-                )
+                ),
+                Lockscreen::make()
+//                    ->usingCustomTableColumns() // Use custom table columns. Default:  email, password.
+                    ->enableRateLimit() // Enable rate limit for the lockscreen. Default: Enable, 5 attempts in 1 minute.
+//                    ->setUrl() // Customize the lockscreen url.
+//                    ->enableIdleTimeout() // Enable auto lock during idle time. Default: Enable, 30 minutes.
+//                    ->disableDisplayName() // Display the name of the user based on the attribute supplied. Default: name
+//                    ->icon() // Customize the icon of the lockscreen.
+                    ->enablePlugin() // Enable the plugin.
+
             ])
             ->middleware([
                 EncryptCookies::class,
