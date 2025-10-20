@@ -24,11 +24,11 @@ enum OrdersPaymentTypeEnum implements HasIcon, HasColor, HasLabel, HasDescriptio
     public function getLabel(): string|Htmlable|null
     {
         return match ($this) {
-            self::Cache => __("orders.status.cache.label"),
-            self::Instapay => __("orders.status.instapay.label"),
-            self::Visa => __("orders.status.visa.label"),
-            self::Wallet => __("orders.status.wallet.label"),
-            self::Other => __("orders.status.other.label"),
+            self::Cache => __("orders.payment-type-label.cache"),
+            self::Instapay => __("orders.payment-type-label.instapay"),
+            self::Visa => __("orders.payment-type-label.visa"),
+            self::Wallet => __("orders.payment-type-label.wallet"),
+            self::Other => __("orders.payment-type-label.other"),
         };
     }
 

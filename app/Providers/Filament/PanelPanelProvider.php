@@ -55,6 +55,7 @@ class PanelPanelProvider extends PanelProvider
                     ->directory("app/backgrounds")
                 ),
                 Lockscreen::make()
+                    ->enableIdleTimeout()
 //                    ->usingCustomTableColumns() // Use custom table columns. Default:  email, password.
                     ->enableRateLimit() // Enable rate limit for the lockscreen. Default: Enable, 5 attempts in 1 minute.
 //                    ->setUrl() // Customize the lockscreen url.

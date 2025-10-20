@@ -21,9 +21,19 @@ return [
     "amount" => "Amount",
     "discount" => "Discount",
     "note" => "Note",
+    "checkout" => "Checkout",
+    "payment-type" => "Payment type",
+    "default-customer" => "Fly customer 💸",
     "status-label" => [
         "preparing" => "Preparing",
         "delivered" => "Delivered",
         "cancelled" => "Cancelled",
+    ],
+    "payment-type-label" => [
+        "cache" => "Cache",
+        "instapay" => "Instapay",
+        "visa" => "Visa",
+        "wallet" => "Wallet",
+        "other" => "Other",
     ],
 ];

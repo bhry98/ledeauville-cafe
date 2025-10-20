@@ -36,22 +36,22 @@ class ItemsRelationManager extends RelationManager
                     ->label(__("items.name"))
                     ->searchable(),
                 TextColumn::make('price')
-                    ->label(__("order.price"))
+                    ->label(__("orders.price"))
                     ->numeric(),
                 TextColumn::make('amount')
-                    ->label(__("order.amount"))
+                    ->label(__("orders.amount"))
                     ->numeric(),
                 TextColumn::make('discount')
-                    ->label(__("order.discount"))
+                    ->label(__("orders.discount"))
                     ->numeric(),
                 TextColumn::make('final_price')
-                    ->label(__("order.final-price"))
+                    ->label(__("orders.final-price"))
                     ->numeric(),
                 TextColumn::make('status')
-                    ->label(__("order.status"))
+                    ->label(__("orders.status"))
                     ->badge(),
                 TextColumn::make('note')
-                    ->label(__("order.note"))
+                    ->label(__("orders.note"))
                     ->default("---"),
             ])
             ->headerActions([

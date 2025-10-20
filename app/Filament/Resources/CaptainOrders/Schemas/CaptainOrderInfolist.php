@@ -24,14 +24,14 @@ class CaptainOrderInfolist
                         TextEntry::make('customer')
                             ->label(__('orders.customer'))
                             ->weight(FontWeight::Bold)
-                            ->getStateUsing(fn($record) => $record->customer ? "( #{$record->customer?->phone_number} ) {$record->customer?->display_name}" : "---"),
+                            ->getStateUsing(fn($record) => $record->customer ? "( #{$record->customer?->phone_number} ) {$record->customer?->display_name}" : __("orders.default-customer")),
                         TextEntry::make('items_count')
                             ->label(__('orders.items'))
                             ->numeric()
                             ->default(0)
                             ->weight(FontWeight::Bold),
-                        TextEntry::make('items_final_price_sum')
-                            ->label(__('orders.price'))
+                        TextEntry::make('items_sum_final_price')
+                            ->label(__('orders.total-price'))
                             ->numeric()
                             ->default(0)
                             ->weight(FontWeight::Bold),

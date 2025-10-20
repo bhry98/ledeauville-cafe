@@ -88,7 +88,7 @@ class CaptainOrderResource extends Resource
         return [
             'index' => ListCaptainOrders::route('/'),
 //            'create' => CreateCaptainOrder::route('/c'),
-            'view' => ViewCaptainOrder::route('/{record}'),
+//            'view' => ViewCaptainOrder::route('/{record}'),
         ];
     }
 }

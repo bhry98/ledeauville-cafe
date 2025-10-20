@@ -17,31 +17,31 @@ class ViewCaptainOrder extends ViewRecord
     protected function getHeaderActions(): array
     {
         return [
-            Action::make('add_item')
-                ->label(__("order.add-item"))
-                ->closeModalByClickingAway(false)
-                ->slideOver()
-                ->schema([
-                    Select::make('item_id')
-                        ->label(__('order.item'))
-                        ->relationship('items.item', 'name')
-                        ->required()
-                        ->getOptionLabelFromRecordUsing(fn($record) => "$record->name ( {$record->category?->name} )")
-                        ->searchable()
-                        ->preload(),
-                    TextInput::make('amount')
-                        ->label(__('order.amount'))
-                        ->numeric()
-                        ->minValue(1)
-                        ->required()
-                        ->default(1),
-                    /**
-                     * 'status',
-                     * 'price',
-                     * 'discount',
-                     * 'final_price',
-                     */
-                ])
+//            Action::make('assdd_item')
+//                ->label(__("order.add-item"))
+//                ->closeModalByClickingAway(false)
+//                ->slideOver()
+//                ->schema([
+//                    Select::make('item_id')
+//                        ->label(__('order.item'))
+//                        ->relationship('items.item', 'name')
+//                        ->required()
+//                        ->getOptionLabelFromRecordUsing(fn($record) => "$record->name ( {$record->category?->name} )")
+//                        ->searchable()
+//                        ->preload(),
+//                    TextInput::make('amount')
+//                        ->label(__('order.amount'))
+//                        ->numeric()
+//                        ->minValue(1)
+//                        ->required()
+//                        ->default(1),
+//                    /**
+//                     * 'status',
+//                     * 'price',
+//                     * 'discount',
+//                     * 'final_price',
+//                     */
+//                ])
         ];
     }
 }
